@@ -1,0 +1,30 @@
+function showTime(){
+	var date = new Date();
+	var hour = date.getHours(); // 0-23
+	var mins = date.getMinutes(); // 0-59
+	var secs = date.getSeconds(); // 0-59
+	var session = "AM";
+
+	if(hour == 0)
+	{
+		hour = 12;
+	}
+
+	if(hour > 12)
+	{
+		hour = hour - 12;
+		session = "PM";
+	}
+
+	hour = (hour < 10) ? "0" + hour : hour;
+	mins = (mins < 10) ? "0" + mins : mins;
+	secs = (secs < 10) ? "0" + secs : secs;
+
+	var time = hour + ":" + mins + ":" + secs + " " + session;
+	document.getElementById("MyClockDisplay").innerText = time;
+	document.getElementById("MyClockDisplay").textContent = time;
+				
+	setTimeout(showTime, 1000);
+}
+
+showTime();
